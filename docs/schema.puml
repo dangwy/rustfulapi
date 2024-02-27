@@ -1,0 +1,36 @@
+@startuml
+hide circle
+skinparam linetype ortho
+
+entity "**message**" {
+  + ""id"": //uuid [PK]//
+  --
+  *""kind"": //message_kind //
+  *""content"": //text //
+  *""status"": //message_status //
+  *""user_id"": //uuid [FK]//
+  ""create_at"": //timestamp with time zone //
+  ""update_at"": //timestamp with time zone //
+}
+
+entity "**seaql_migrations**" {
+  + ""version"": //character varying [PK]//
+  --
+  *""applied_at"": //bigint //
+}
+
+entity "**users**" {
+  + ""id"": //uuid [PK]//
+  --
+  *""username"": //character varying(255) //
+  *""password"": //character varying(255) //
+  *""email"": //character varying(255) //
+  *""role"": //role_user //
+  *""is_active"": //boolean //
+  *""is_2fa"": //boolean //
+  ""create_at"": //timestamp with time zone //
+  ""update_at"": //timestamp with time zone //
+}
+
+"**message**"   }--  "**users**"
+@enduml
